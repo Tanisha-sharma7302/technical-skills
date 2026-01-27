@@ -1,0 +1,49 @@
+package compititive;
+import java.util.Scanner;
+
+public class prefixSumArray {
+    static int[] prefsum(int[] arr) {
+        int n = arr.length;
+        int[] newarr = new int[n];
+        newarr[0] = arr[0];
+        for (int i = 1; i < n; i++) {
+            newarr[i] = newarr[i - 1] + arr[i];
+        }
+        return newarr;
+    }
+
+    static int count(int [] arr) {
+        int[] newarr = prefsum(arr);
+        int n = arr.length;
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            int leftsum, rightsum;
+            if (i == 0) {
+                leftsum = 0;
+            } else {
+                leftsum = newarr[i - 1];
+            }
+            rightsum = newarr[n - 1] - newarr[i];
+            if (leftsum == rightsum) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+
+   public static void main(String[] args) {
+       Scanner sc= new Scanner(System.in);
+       System.out.println("Enter Array size : ");
+       int n=sc.nextInt();
+       int [] arr= new int[n];
+       System.out.println("Array input : ");
+       for(int i=0;i<n;i++){
+           arr[i]=sc.nextInt();
+       }
+
+       int arr1=count(arr);
+       System.out.println("Count is : " + arr1);
+
+    }
+}
