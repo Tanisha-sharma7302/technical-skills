@@ -1,0 +1,39 @@
+package compititive;
+import java.util.Scanner;
+
+public class ProductDivideArray {
+
+    //given an array of integer A find and return the product array of the same size,
+// where the ith element of the product array will be equal to the product of all elements
+// divided by the ith element of the array..
+// example > {1, 2, 3, 4, 5} output >> {120, 60, 40, 30, 24}
+
+    static int [] product(int [] arr){
+        int prod=1;
+        for(int i=0;i<arr.length;i++){
+            prod*=arr[i];
+        }
+        int [] ans= new int[arr.length];
+        for(int i=0;i<arr.length;i++){
+            ans[i]=prod/arr[i];
+        }
+        return ans;
+    }
+
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter size of the Array : ");
+        int n=sc.nextInt();
+        int [] arr= new int[n];
+        System.out.println("Array input : ");
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        int [] ans=product(arr);
+        System.out.print("Answered array is : ");
+        for(int i : ans){
+            System.out.print(i + " ");
+        }
+    }
+}
